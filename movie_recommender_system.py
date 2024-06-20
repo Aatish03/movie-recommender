@@ -5,6 +5,14 @@ import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
+url_new = 'https://github.com/username/repository/releases/download/tag/similarity.pkl'
+download_path = 'path/to/save/similarity.pkl'
+
+response = requests.get(url_new)
+with open(download_path, 'wb') as f:
+    f.write(response.content)
+
+
 def fetch_poster(movie_id, retries=3, backoff_factor=0.3):
     url = f'https://api.themoviedb.org/3/movie/{movie_id}?language=en-US&api_key=eec5e61786f3230bfbdc78f343f532d5'
 
